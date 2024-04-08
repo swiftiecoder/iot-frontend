@@ -43,7 +43,7 @@ def sendData():
         userData = result["user_data"]
         #send via api to the server with the user's chat id, stored in global person
         # person["chat_id"]
-        print(userData, person["chat_id"])
+        print(userData, person["chat_id"], person["user_id"])
     return render_template("welcome.html", email = person["email"], name = person["name"])
 
 
