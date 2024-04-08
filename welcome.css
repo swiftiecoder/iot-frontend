@@ -1,0 +1,83 @@
+body{
+	margin: 0;
+	background-color: #b6282f;
+}
+
+.main{
+	width: 60vw;
+	padding-top: 100px;
+	padding-bottom: 100px;
+	text-align: center;
+	margin-top: 20vh;
+	background-color: #d5f0de;
+	margin-left: 20vw;
+}
+
+.name{
+	font-size: 300%;
+	font-family: monospace;
+}
+
+.email{
+	font-size: 150%;
+	color: #404040;
+	font-family: monospace;
+}
+
+.redirectButton {
+	/* background-color: #d0d7da; */
+	background-color: #d1915e;
+	border: none;
+	color:  #000000;;
+	margin-top:40px;
+	padding: 15px 80px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	text-transform: uppercase;
+	font-size: 13px;
+	width: 40%;
+	border-radius: 10px;
+}
+
+.redirectButton:hover  {
+background-color: #d6282f;
+}
+
+.redirectButton:active  {
+-moz-transform: scale(0.95);
+-webkit-transform: scale(0.95);
+-o-transform: scale(0.95);
+-ms-transform: scale(0.95);
+transform: scale(0.95);
+}
+
+input[type="user_data"] {
+	background-color: #f6f6f6;
+	border: none;
+	color: #0d0d0d;
+	padding: 30px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 5px;
+	width: 60%;
+	border: 2px solid #f6f6f6;
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-ms-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+	-webkit-border-radius: 5px 5px 5px 5px;
+	border-radius: 5px 5px 5px 5px;
+}
+
+input[type=user_data]:focus {
+	background-color: #f6f6f6;
+	border-bottom: 2px solid #d6282f;
+}
+
+input[type=user_data]::placeholder {
+	color: #cccccc;
+}
