@@ -3,4 +3,4 @@ requests
 pyngrok
 gunicorn
 wfastcgi
-pyrebase
+pyrebase4
