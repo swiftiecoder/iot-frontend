@@ -126,7 +126,7 @@ def register():
         if person["is_logged_in"] == True:
             return redirect(url_for('welcome'))
         else:
-            return redirect(url_for('/'))
+            return redirect(url_for('oops'))
 
 if __name__ == "__main__":
     app.run()
