@@ -119,8 +119,7 @@ def register():
         age = result["age"] 
         user_id = result["id"]
         chat_id = result["chat_id"]
-        # extra_info = result["info"]
-        extra_info = 'none'
+        extra_info = result["info"]
         blood_sugar = result["blood_sugar"]
         blood_pressure = result["blood_pressure"]
         heart_history = result["heart_history"]
