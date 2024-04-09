@@ -91,7 +91,7 @@ def result():
             person["name"] = data.val()[person["uid"]]["name"]
             person["user_id"] = data.val()[person["uid"]]["user id"]
             person["chat_id"] = data.val()[person["uid"]]["chat_id"]
-            person["info"] = data.val()[person["uid"]]["info"]
+            person["extra_info"] = data.val()[person["uid"]]["extra_info"]
             person["age"] = data.val()[person["uid"]]["age"]
             person["height"] = data.val()[person["uid"]]["height"]
             person["weight"] = data.val()[person["uid"]]["weight"]
