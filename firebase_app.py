@@ -1,6 +1,8 @@
 import pyrebase
-from flask import Flask, flash, redirect, render_template, request, session, abort, url_for
+from flask import Flask, session, flash, redirect, render_template, request, session, abort, url_for
 import os
+import json
+import requests
 app = Flask(__name__)       #Initialze flask constructor
 
 #Add your own details
@@ -51,16 +53,40 @@ def signup():
 def oops():
     return render_template("wrong.html")
 
+@app.route("/logout")
+def logout():
+    global person
+    person = {
+    "is_logged_in": False, 
+    "name": "", 
+    "age":"", 
+    "height":"", 
+    "weight":"", 
+    "email": "", 
+    "uid": "", 
+    "chat_id": "", 
+    "user_id": "",
+    "blood_pressure":"",
+    "blood_sugar":"",
+    "extra_info":"",
+    "heart_history":"",
+    "responses":""
+    }    
+    return redirect(url_for('login'))
+
 @app.route("/userdata", methods = ["POST", "GET"])
 def sendData():
     if request.method == "POST":   
         result = request.form      
         userData = result["user_data"]
-        #send via api to the server with the user's chat id, stored in global person
-        # person["chat_id"]
-        print(userData, person["chat_id"], person["user_id"])
-    return render_template("welcome.html", email = person["email"], name = person["name"])
-
+        try:
+            send = json.loads(userData)
+            print(send)
+            response = requests.post('https://oyster-app-nxxsn.ondigitalocean.app/api', json=send)
+            print(response.json())
+        except ValueError:
+            pass
+    return redirect(url_for('welcome'))
 
 #Welcome page
 @app.route("/welcome")
