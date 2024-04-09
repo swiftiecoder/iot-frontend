@@ -5,7 +5,7 @@ app = Flask(__name__)       #Initialze flask constructor
 
 #Add your own details
 config = {
-	"apiKey": os.environ.get('FIREBASE_AUTH_KEY'),
+    "apiKey": os.environ.get('FIREBASE_AUTH_KEY'),
     "authDomain": "sb-flask.firebaseapp.com",
     "databaseURL": "https://sb-flask-default-rtdb.firebaseio.com",
     "projectId": "sb-flask",
@@ -20,7 +20,7 @@ auth = firebase.auth()
 db = firebase.database()
 
 #Initialze person as dictionary
-person = {"is_logged_in": False, "name": "", "email": "", "uid": "", "chat_id": "", "user_id": ""}
+person = {"is_logged_in": False, "name": "", "age":"", "height":"", "weight":"", "email": "", "uid": "", "chat_id": "", "user_id": ""}
 
 #Login
 @app.route("/")
@@ -78,6 +78,8 @@ def result():
             person["chat_id"] = data.val()[person["uid"]]["chat_id"]
             person["info"] = data.val()[person["uid"]]["info"]
             person["age"] = data.val()[person["uid"]]["age"]
+            person["height"] = data.val()[person["uid"]]["height"]
+            person["weight"] = data.val()[person["uid"]]["weight"]
             #Redirect to welcome page
             return redirect(url_for('welcome'))
         except Exception as e:
@@ -115,8 +117,11 @@ def register():
             person["info"] = info
             person["name"] = name
             person["age"] = age
+            person["height"] = height
+            person["weight"] = weight
             #Append data to the firebase realtime database
-            data = {"name": name, "email": email, "age": age, "user id": user_id, "chat_id": chat_id, "info" : info, "user_data": ''}
+            data = {"name": name, "email": email, "age": age, "user id": user_id, "chat_id": chat_id, "height": height, "weight": weight, "prev_responses": ''}
+            # data = {"name": name, "email": email, "age": age, "user id": user_id, "chat_id": chat_id, "info" : info, "height": height, "weight": weight, "prev_responses": ''}
             db.child("users").child(person["uid"]).set(data)
             #Go to welcome page
             return redirect(url_for('welcome'))
