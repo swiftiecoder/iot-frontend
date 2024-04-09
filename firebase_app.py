@@ -95,9 +95,9 @@ def result():
             person["age"] = data.val()[person["uid"]]["age"]
             person["height"] = data.val()[person["uid"]]["height"]
             person["weight"] = data.val()[person["uid"]]["weight"]
-            person["weight"] = data.val()[person["uid"]]["blood_sugar"]
-            person["weight"] = data.val()[person["uid"]]["blood_pressure"]
-            person["weight"] = data.val()[person["uid"]]["heart_history"]
+            person["blood_sugar"] = data.val()[person["uid"]]["blood_sugar"]
+            person["blood_pressure"] = data.val()[person["uid"]]["blood_pressure"]
+            person["heart_history"] = data.val()[person["uid"]]["heart_history"]
             #Redirect to welcome page
             return redirect(url_for('welcome'))
         except Exception as e:
@@ -119,7 +119,8 @@ def register():
         age = result["age"] 
         user_id = result["id"]
         chat_id = result["chat_id"]
-        extra_info = result["info"]
+        # extra_info = result["info"]
+        extra_info = 'none'
         blood_sugar = result["blood_sugar"]
         blood_pressure = result["blood_pressure"]
         heart_history = result["heart_history"]
@@ -137,7 +138,7 @@ def register():
             person["uid"] = user["localId"]
             person["user_id"] = user_id
             person["chat_id"] = chat_id
-            person["info"] = info
+            person["info"] = extra_info
             person["name"] = name
             person["age"] = age
             person["height"] = height
@@ -157,7 +158,8 @@ def register():
                 "blood_sugar":blood_sugar,
                 "blood_pressure":blood_pressure,
                 "heart_history":heart_history,
-                "responses": ''
+                "responses": '',
+                "extra_info": extra_info
             }
             db.child("users").child(person["uid"]).set(data)
             #Go to welcome page
