@@ -20,7 +20,22 @@ auth = firebase.auth()
 db = firebase.database()
 
 #Initialze person as dictionary
-person = {"is_logged_in": False, "name": "", "age":"", "height":"", "weight":"", "email": "", "uid": "", "chat_id": "", "user_id": ""}
+person = {
+    "is_logged_in": False, 
+    "name": "", 
+    "age":"", 
+    "height":"", 
+    "weight":"", 
+    "email": "", 
+    "uid": "", 
+    "chat_id": "", 
+    "user_id": "",
+    "blood_pressure":"",
+    "blood_sugar":"",
+    "extra_info":"",
+    "heart_history":"",
+    "responses":""
+}
 
 #Login
 @app.route("/")
@@ -80,6 +95,9 @@ def result():
             person["age"] = data.val()[person["uid"]]["age"]
             person["height"] = data.val()[person["uid"]]["height"]
             person["weight"] = data.val()[person["uid"]]["weight"]
+            person["weight"] = data.val()[person["uid"]]["blood_sugar"]
+            person["weight"] = data.val()[person["uid"]]["blood_pressure"]
+            person["weight"] = data.val()[person["uid"]]["heart_history"]
             #Redirect to welcome page
             return redirect(url_for('welcome'))
         except Exception as e:
@@ -101,7 +119,12 @@ def register():
         age = result["age"] 
         user_id = result["id"]
         chat_id = result["chat_id"]
-        info = result["info"]
+        extra_info = result["info"]
+        blood_sugar = result["blood_sugar"]
+        blood_pressure = result["blood_pressure"]
+        heart_history = result["heart_history"]
+        height = result["height"]
+        weight = result["weight"]
         try:
             #Try creating the user account using the provided data
             auth.create_user_with_email_and_password(email, password)
@@ -119,9 +142,23 @@ def register():
             person["age"] = age
             person["height"] = height
             person["weight"] = weight
+            person["blood_sugar"] = blood_sugar
+            person["blood_pressure"] = blood_pressure
+            person["heart_history"] = heart_history
             #Append data to the firebase realtime database
-            data = {"name": name, "email": email, "age": age, "user id": user_id, "chat_id": chat_id, "height": height, "weight": weight, "prev_responses": ''}
-            # data = {"name": name, "email": email, "age": age, "user id": user_id, "chat_id": chat_id, "info" : info, "height": height, "weight": weight, "prev_responses": ''}
+            data = {
+                "name": name, 
+                "email": email, 
+                "age": age, 
+                "user id": user_id, 
+                "chat_id": chat_id, 
+                "height": height, 
+                "weight": weight,
+                "blood_sugar":blood_sugar,
+                "blood_pressure":blood_pressure,
+                "heart_history":heart_history,
+                "responses": ''
+            }
             db.child("users").child(person["uid"]).set(data)
             #Go to welcome page
             return redirect(url_for('welcome'))
