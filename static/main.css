@@ -125,7 +125,7 @@ input[type=button]:active, input[type=submit]:active, input[type=reset]:active  
   transform: scale(0.95);
 }
 
-input[type=email], input[type=password], input[type=text], input[type=age], input[type="user id"], input[type="chat id"] {
+input[type=email], input[type=password], input[type=text], input[type=age], input[type="user id"], input[type="chat id"], input[type=height], input[type=weight] {
   background-color: #f6f6f6;
   border: none;
   color: #0d0d0d;
@@ -167,13 +167,13 @@ input[type="info"] {
   border-radius: 5px 5px 5px 5px;
 }
 
-input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, input[type=age]:focus, input[type="user id"]:focus, input[type="chat id"]:focus, input[type="info"]:focus {
+input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, input[type=age]:focus, input[type="user id"]:focus, input[type="chat id"]:focus, input[type="height"]:focus, input[type="weight"]:focus, input[type="info"]:focus {
   background-color: #fff;
   border-bottom: 2px solid #d6282f;
   /* border-bottom: 2px solid #5fbae9; */
 }
 
-input[type=email]::placeholder, input[type=password]::placeholder, input[type=text]::placeholder, input[type="age"]::placeholder, input[type="user id"]::placeholder, input[type="chat id"]::placeholder, input[type="info"]::placeholder {
+input[type=email]::placeholder, input[type=password]::placeholder, input[type=text]::placeholder, input[type="age"]::placeholder, input[type="user id"]::placeholder, input[type="chat id"]::placeholder, input[type="height"]::placeholder, input[type="weight"]::placeholder, input[type="info"]::placeholder {
   color: #cccccc;
 }
 
