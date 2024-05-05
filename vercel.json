@@ -4,6 +4,6 @@
         {"src": "firebase_app.py", "use": "@vercel/python"}
     ],
     "routes": [
-        {"src": "/(.*)", "dest": "firebase_app.py"}
+        {"src": "/(.*)", "dest": "/"}
     ]
 }
