@@ -4,3 +4,4 @@ pyngrok
 gunicorn
 wfastcgi
 pyrebase4
+setuptools
