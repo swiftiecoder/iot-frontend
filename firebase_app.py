@@ -82,7 +82,7 @@ def sendData():
         try:
             send = json.loads(userData)
             print(send)
-            response = requests.post('https://oyster-app-nxxsn.ondigitalocean.app/api', json=send)
+            response = requests.post('https://telegrambot-green-beta.vercel.app/api', json=send)
             print(response.json())
         except ValueError:
             pass
